@@ -1,0 +1,15 @@
+{
+  "name": "defind-server",
+  "version": "0.0.1",
+  "description": "defind server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "defind-server"
+  },
+  "author": "kitty jutbring",
+  "license": "GPL-3.0"
+}
