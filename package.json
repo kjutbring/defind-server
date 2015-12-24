@@ -4,12 +4,22 @@
   "description": "defind server",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "./node_modules/mocha/bin/mocha test.js -u bdd -R spec"
   },
   "repository": {
     "type": "git",
     "url": "defind-server"
   },
   "author": "kitty jutbring",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "koa": "^1.1.2",
+    "koa-route": "^2.4.2"
+  },
+  "devDependencies": {
+    "co": "^4.6.0",
+    "mocha": "^2.3.4",
+    "supertest": "^1.1.0"
+  }
 }
