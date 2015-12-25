@@ -12,7 +12,7 @@ module.exports.add = function * () {
     var res = yield db.insert(postedLocation);
     var body = res[0], headers = res[1];
 
-    this.set("locaton", "/location/" + res._id);
+    this.set("locaton", "/api/location/" + res._id);
     this.status = 200;
 };
 

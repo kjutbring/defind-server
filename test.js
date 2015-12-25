@@ -12,7 +12,7 @@ describe("Location Api:", function() {
     it("Creates a new location", function(done) {
         
         request
-            .post("/location")
+            .post("/api/location")
             .send(test_location)
             .expect(200, done);
     });

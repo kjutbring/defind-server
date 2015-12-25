@@ -4,10 +4,10 @@ var routes = require("koa-route");
 
 // location routes
 var locationRoutes = require("./locationRoutes.js");
-app.use(routes.post("/location", locationRoutes.add));
-app.use(routes.get("/location/:device", locationRoutes.get));
-app.use(routes.put("/location/:device", locationRoutes.update));
-app.use(routes.del("/location/:device", locationRoutes.remove));
+app.use(routes.post("/api/location", locationRoutes.add));
+app.use(routes.get("/api/location/:device", locationRoutes.get));
+app.use(routes.put("/api/location/:device", locationRoutes.update));
+app.use(routes.del("/api/location/:device", locationRoutes.remove));
 
 
 app.listen(3000);
