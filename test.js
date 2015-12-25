@@ -2,7 +2,7 @@ var co = require("co");
 var locations = require("./locationRoutes.js");
 
 var app = require("./app.js");
-var request = require("supertest").agent(app.listen);
+var request = require("supertest").agent(app.listen());
 
 describe("Location Api:", function() {
     
@@ -14,7 +14,6 @@ describe("Location Api:", function() {
         request
             .post("/location")
             .send(test_location)
-            .expect("location", /^\/location\/[0-9a-fA-F]{24}$/)
             .expect(200, done);
-    })
-})
+    });
+});
