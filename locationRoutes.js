@@ -6,14 +6,16 @@ var coNano = require("co-nano")(nano);
 
 var db = coNano.use("location_api");
 
-module.exports.add = function * () {
+module.exports.add = function * () { 
+
     var postedLocation = yield parse(this);
     
     var res = yield db.insert(postedLocation);
     var body = res[0], headers = res[1];
 
     this.set("locaton", "/api/location/" + res._id);
-    this.status = 200;
+    this.status = 200;      
+    
 };
 
 module.exports.get = function *get(device) {
