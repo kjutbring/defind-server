@@ -19,5 +19,13 @@ module.exports.add = function * () {
 };
 
 module.exports.get = function *get(device) {
-    this.body = "you passed: " + device;
+  
+    var deviceJson = { device: device };
+
+    var res = yield db.fetch(deviceJson);
+
+    this.body = res;
+    this.status = 200;
 };
+
+

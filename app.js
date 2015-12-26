@@ -23,7 +23,7 @@ app.use(function *(next){
  * middleware below is only available with valid jwt token
  */
 app.use(jwt({
-    secret: "super_secret_secret",
+    secret: "kittys_super_cool_secret",
     algorithm: "HS256"
 }));
 
