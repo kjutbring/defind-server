@@ -45,6 +45,14 @@ module.exports.remove = function *del(id) {
     this.status = 200; 
 };
 
+module.exports.update = function *put() {
+    
+    var locationJson = yield parse(this);
+
+    console.log("put request sent with device: " + locationJson);
+}
+
+
 
 
 
