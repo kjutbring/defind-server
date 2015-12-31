@@ -20,9 +20,9 @@ module.exports.add = function * () {
 
 module.exports.get = function *get(device) {
   
-    var deviceJson = { device: [device] };
+    var deviceJson = { keys: [device] };
     
-    nano.view("locations", "by_device_id", deviceJson, function(err, body) {
+    var body = nano.view("locations", "by_device_id", deviceJson, function(err, body) {
         
         if (!err) {
             body.rows.forEach(function(doc) {
@@ -30,6 +30,8 @@ module.exports.get = function *get(device) {
             });
         }
     });
+    
+    this.body = body;
 
     this.status = 200;
 };
