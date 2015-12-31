@@ -36,6 +36,15 @@ module.exports.get = function *get(device) {
     this.status = 200;
 };
 
+module.exports.remove = function *del(id) {
+    
+    var documentId = { id };
+
+    console.log("del request sent for id: " + id);
+
+    this.status = 200; 
+};
+
 
 
 
