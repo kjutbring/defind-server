@@ -3,7 +3,7 @@ var app = module.exports = koa()
 var routes = require("koa-route");
 var jwt = require("koa-jwt");
 var helmet = require("koa-helmet");
-var ssl = require(koa-ssl);
+var ssl = require("koa-ssl");
 
 app.use(ssl());
 app.use(helmet());
