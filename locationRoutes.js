@@ -36,11 +36,26 @@ module.exports.get = function *get(device) {
     this.status = 200;
 };
 
-module.exports.remove = function *del(id) {
+module.exports.remove = function *del(device) {
     
-    var documentId = { id };
+    var deviceJson = { keys: [device]};
 
-    console.log("del request sent for id: " + id);
+    var body = nano.view("locations", "by_device_id", deviceJson, function(err, body) {
+        
+        if (!err) {
+            body.rows.forEach(function(doc) {
+                nano.get(doc.id, function(err, existing) {
+                    if (!err) {
+                        nano.destroy(doc.id, existing._rev, function(err, body, header) {
+                            if (!err) {
+                                console.log("Deleted: ", doc.id);
+                            }
+                        });
+                    }
+                });
+            });
+        } 
+    });
 
     this.status = 200; 
 };
