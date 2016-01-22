@@ -1,13 +1,18 @@
 var koa = require("koa");
-var app = module.exports = koa()
+var app = module.exports = koa();
+
+var http = require("http");
+var https = require("https");
+var fs = require("fs");
+
 var routes = require("koa-route");
 var jwt = require("koa-jwt");
 var helmet = require("koa-helmet");
-var forceSSL = require("koa-force-ssl");
+var enforceHttps = require("koa-sslify");
 
 app.use(helmet());
 
-app.use(forceSSL());
+app.use(enforceHttps());
 
 
 /*
@@ -41,5 +46,10 @@ app.use(routes.get("/api/location/:device", locationRoutes.get));
 app.use(routes.put("/api/location/:device", locationRoutes.update));
 app.use(routes.del("/api/location/:device", locationRoutes.remove));
 
-app.listen(3000);
-console.log("Listening on port 3000.");
+var options= {
+    key: fs.readFileSync("key.pem"),
+    cert: fs.readFileSync("cert.pem")
+}
+
+http.createServer(app.callback()).listen(80);
+https.createServer(options, app.callback()).listen(443);
