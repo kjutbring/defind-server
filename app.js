@@ -2,6 +2,10 @@ var koa = require("koa");
 var app = module.exports = koa()
 var routes = require("koa-route");
 var jwt = require("koa-jwt");
+var helmet = require("koa-helmet");
+
+app.use(helmet());
+
 
 /*
  * custom 401 message
