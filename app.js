@@ -12,7 +12,9 @@ var enforceHttps = require("koa-sslify");
 
 app.use(helmet());
 
-app.use(enforceHttps());
+app.use(enforceHttps({
+    trustProtoHeader: true
+}));
 
 
 /*
@@ -46,10 +48,5 @@ app.use(routes.get("/api/location/:device", locationRoutes.get));
 app.use(routes.put("/api/location/:device", locationRoutes.update));
 app.use(routes.del("/api/location/:device", locationRoutes.remove));
 
-var options= {
-    key: fs.readFileSync("key.pem"),
-    cert: fs.readFileSync("cert.pem")
-}
 
-http.createServer(app.callback()).listen(80);
-https.createServer(options, app.callback()).listen(443);
+app.listen(3000);
